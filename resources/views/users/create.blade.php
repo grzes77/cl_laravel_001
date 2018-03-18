@@ -14,25 +14,25 @@
     @endif
 
 
-    <form action="{{route('articles.store')}}" method="post" >
+    <form action="{{route('users.store')}}" method="post" >
         {{csrf_field()}}
         <div class="form-group">
-            <input placeholder="dodaj nowy tytul" type="text" class="form-control" name="title">
+            <input placeholder="podaj nazwe uzytkownika" type="text" class="form-control" name="name">
         </div>
 
         <div class="form-group">
-            <textarea  class="form-control" name="body" rows="10" placeholder="dodaj jaki artykuł"> </textarea>
+            <input placeholder="podaj maila" type="text" class="form-control" name="email">
         </div>
 
         <div class="form-group">
-
-            <select name="category_id" class="form-control">
-            @foreach($categories as $category)
-                <option value="{{$category->id}}" > {{$category->name}}</option>
-
-                @endforeach
-            </select>
+            <input placeholder="haslo " type="password" class="form-control" name="password">
         </div>
+
+        <div class="form-group">
+            <input placeholder=" powtorz haslo " type="password" class="form-control" name="password2">
+        </div>
+
+
 
         <div class="form-group">
             <button class="btn btn-primary">zapisz</button>

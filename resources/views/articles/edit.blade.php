@@ -2,6 +2,16 @@
 
 @section('content')
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{route('articles.update', $article->id)}}" method="post" >
         {{csrf_field()}}
         <input type="hidden" name="_method" value="put">
