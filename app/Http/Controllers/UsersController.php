@@ -33,15 +33,14 @@ class UsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        User::create($request->all());
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
         return redirect( route('users.index') );
     }
 
-    public function storeEdit(UsersEditRequest $request)
-    {
-        User::create($request->all());
-        return redirect( route('users.index') );
-    }
+
 
     /**
      * Display the specified resource.
@@ -70,13 +69,19 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param UsersEditRequest|Request $request
+     * @param User $user
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(UsersEditRequest $request, User $user)
     {
-        //
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+
+
+        $user->update($data);
+        return redirect( route('users.index') );
     }
 
     /**

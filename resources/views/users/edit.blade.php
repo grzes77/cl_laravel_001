@@ -12,8 +12,13 @@
         </div>
     @endif
 
-    <form action="{{route('users.storeEdit')}}" method="post" >
+
+<!--    --><?php //dd($user)?>
+    <form action="{{route('users.update',$user->id)}}" method="post" >
         {{csrf_field()}}
+
+        <input type="hidden" name="_method" value="put">
+
         <div class="form-group">
             <input placeholder="podaj nazwe uzytkownika" type="text" class="form-control" name="name" value="{{$user->name}}">
         </div>
@@ -36,5 +41,7 @@
             <button class="btn btn-primary">zapisz</button>
         </div>
     </form>
+
+
 
 @endsection

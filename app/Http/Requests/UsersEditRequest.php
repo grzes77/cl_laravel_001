@@ -24,8 +24,8 @@ class UsersEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:users,name',
-            'email' => 'required|email',
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'.$this->user()->id,
             'password' => 'required'
         ];
     }
@@ -34,9 +34,9 @@ class UsersEditRequest extends FormRequest
     {
         return [
             'name.required' => 'pole imie jest wymagane',
-            'name.unique' => 'pole imie musi byc unikalne',
             'email.required' => 'pole mail jest wymagane',
-            'email.email' => 'pole mail nie zawiera maila'
+            'email.email' => 'pole mail nie zawiera maila',
+            'password.required' => 'pole haslo jest wymagane'
 
         ];
     }

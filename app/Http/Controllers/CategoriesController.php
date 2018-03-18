@@ -44,11 +44,15 @@ class CategoriesController extends Controller
         ]);
 
     }
+
+
     public  function  update(CategoriesRequest $request, Category $category){
         $category->name = $request->name;
         $category->save();
         return redirect(route('categories.index') );
     }
+
+
 
     public function destroy(Category $category){
             $category->delete();

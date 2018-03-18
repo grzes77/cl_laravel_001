@@ -88,10 +88,10 @@ class ArticlesController extends Controller
      */
     public function update(ArticlesRequest $request, Article $article)
     {
-        $article-> title = $request -> title;
-        $article-> category_id = $request -> category_id;
-        $article-> body = $request -> body;
-        $article-> save();
+//        $article-> title = $request -> title;
+//        $article-> category_id = $request -> category_id;
+//        $article-> body = $request -> body;
+//        $article-> save();
         $article->update($request->all());
         return redirect( route('articles.index') );
     }

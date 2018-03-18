@@ -19,6 +19,7 @@ class UsersRequest extends FormRequest
             'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required'
+
         ];
     }
 
@@ -29,7 +30,8 @@ class UsersRequest extends FormRequest
             'name.unique' => 'pole imie musi byc unikalne',
             'email.required' => 'pole mail jest wymagane',
             'email.email' => 'pole mail nie zawiera maila',
-            'email.unique' => 'baza zawiera juz takiego maila'
+            'email.unique' => 'baza zawiera juz takiego maila',
+            'password.required' => 'pole haslo jest wymagane'
         ];
     }
 }

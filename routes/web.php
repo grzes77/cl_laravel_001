@@ -47,4 +47,5 @@ Route::group([
     Route::resource('articles', 'ArticlesController');
 
     Route::resource('users', 'UsersController');
+
 });
