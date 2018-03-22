@@ -15,6 +15,7 @@
     <form action="{{route('articles.update', $article->id)}}" method="post">
         {{csrf_field()}}
         <input type="hidden" name="_method" value="put">
+
         <div class="form-group">
             <input type="text" class="form-control" name="title" value="{{$article->title}}">
         </div>

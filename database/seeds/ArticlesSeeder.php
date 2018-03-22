@@ -13,11 +13,12 @@ class ArticlesSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('pl_PL');
 
-        for($i=0; $i<100; $i++) {
-            $category = new \App\Article();
-            $category->title = $faker->title();
-            $category->body = $faker->sentence(30);
-            $category->save();
+        for($i=0; $i<200; $i++) {
+            $article = new \App\Article();
+            $article->title = $faker->title();
+            $article->body = $faker->sentence(30);
+            $article->category_id = $faker->numberBetween(1,200);
+            $article->save();
         }
     }
 }

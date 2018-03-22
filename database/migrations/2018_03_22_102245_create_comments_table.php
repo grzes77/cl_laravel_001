@@ -23,7 +23,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('article_id')
                 ->references('id')
                 ->on('articles')
-                ->onDelete('SET NULL');
+                ->onDetele('SET NULL');
         });
     }
 

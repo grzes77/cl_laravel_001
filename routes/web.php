@@ -48,4 +48,6 @@ Route::group([
 
     Route::resource('users', 'UsersController');
 
+    Route::resource('comments', 'CommentsController');
+
 });
