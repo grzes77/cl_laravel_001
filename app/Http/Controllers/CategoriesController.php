@@ -36,8 +36,7 @@ class CategoriesController extends Controller
 
     public function edit(Category $category){
 
-        //dump($category);
-        //$category = Category::find($id);
+       // alternatywa wywietlenia wszystkich kategori  //$category = Category::find($id);
 
         return view('categories.edit',[
            'category' => $category

@@ -14,7 +14,7 @@
     @endif
 
 
-    <form action="{{route('users.store')}}" method="post" >
+    <form action="{{route('users.store')}}" method="post">
         {{csrf_field()}}
         <div class="form-group">
             <input placeholder="podaj nazwe uzytkownika" type="text" class="form-control" name="name">
@@ -29,9 +29,8 @@
         </div>
 
         <div class="form-group">
-            <input placeholder=" powtorz haslo " type="password" class="form-control" name="password2">
+            <input placeholder=" powtorz haslo " type="password" class="form-control" name="password_confirmation">
         </div>
-
 
 
         <div class="form-group">
@@ -44,4 +43,4 @@
 
 
 
-    @endsection
+@endsection

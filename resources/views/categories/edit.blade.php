@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <form action="{{route('categories.update', $category->id)}}" method="post" >
+    <form action="{{route('categories.update', $category->id)}}" method="post">
         {{csrf_field()}}
         <input type="hidden" name="_method" value="put">
         <div class="form-group">

@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <form action="{{route('articles.update', $article->id)}}" method="post" >
+    <form action="{{route('articles.update', $article->id)}}" method="post">
         {{csrf_field()}}
         <input type="hidden" name="_method" value="put">
         <div class="form-group">
@@ -30,9 +30,9 @@
 
                     @if($article->category_id==$category->id)
 
-                        <option selected value="{{$category->id}}" > {{$category->name}}</option>
+                        <option selected value="{{$category->id}}"> {{$category->name}}</option>
                     @else
-                        <option value="{{$category->id}}" > {{$category->name}}</option>
+                        <option value="{{$category->id}}"> {{$category->name}}</option>
 
                     @endif
 

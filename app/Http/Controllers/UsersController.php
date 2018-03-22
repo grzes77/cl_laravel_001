@@ -27,10 +27,7 @@ class UsersController extends Controller
     }
 
 
-    /**
-     * @param UsersRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
+
     public function store(UsersRequest $request)
     {
         $data = $request->all();
@@ -42,23 +39,15 @@ class UsersController extends Controller
 
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function edit(User $user)
     {
 
@@ -66,14 +55,8 @@ class UsersController extends Controller
             ['user' => $user]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UsersEditRequest|Request $request
-     * @param User $user
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
-     */
+
+
     public function update(UsersEditRequest $request, User $user)
     {
         $data = $request->all();
@@ -84,14 +67,11 @@ class UsersController extends Controller
         return redirect( route('users.index') );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect(route('users.index'));
     }
 }

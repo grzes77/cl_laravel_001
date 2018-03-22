@@ -26,7 +26,7 @@ class UsersEditRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|unique:users,email,'.$this->user()->id,
-            'password' => 'required'
+            'password' => 'required|confirmed'
         ];
     }
 

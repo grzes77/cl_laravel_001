@@ -13,14 +13,15 @@
     @endif
 
 
-<!--    --><?php //dd($user)?>
-    <form action="{{route('users.update',$user->id)}}" method="post" >
+
+    <form action="{{route('users.update',$user->id)}}" method="post">
         {{csrf_field()}}
 
         <input type="hidden" name="_method" value="put">
 
         <div class="form-group">
-            <input placeholder="podaj nazwe uzytkownika" type="text" class="form-control" name="name" value="{{$user->name}}">
+            <input placeholder="podaj nazwe uzytkownika" type="text" class="form-control" name="name"
+                   value="{{$user->name}}">
         </div>
 
         <div class="form-group">
@@ -32,9 +33,8 @@
         </div>
 
         <div class="form-group">
-            <input placeholder=" powtorz haslo " type="password" class="form-control" name="password2">
+            <input placeholder=" powtorz haslo " type="password" class="form-control" name="password_confirmation">
         </div>
-
 
 
         <div class="form-group">
@@ -44,4 +44,4 @@
 
 
 
-@endsection
+    @endsection

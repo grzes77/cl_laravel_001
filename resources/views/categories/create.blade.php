@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action="{{route('categories.store')}}" method="post" >
+    <form action="{{route('categories.store')}}" method="post">
         {{csrf_field()}}
         <div class="form-group">
             <input type="text" class="form-control" name="name">
@@ -29,4 +29,4 @@
 
 
 
-    @endsection
+@endsection

@@ -18,7 +18,8 @@ class UsersRequest extends FormRequest
         return [
             'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|confirmed',
+            'password_confirmed' => 'required'
 
         ];
     }
@@ -31,7 +32,9 @@ class UsersRequest extends FormRequest
             'email.required' => 'pole mail jest wymagane',
             'email.email' => 'pole mail nie zawiera maila',
             'email.unique' => 'baza zawiera juz takiego maila',
-            'password.required' => 'pole haslo jest wymagane'
+            'password.required' => 'pole haslo jest wymagane',
+            'password.confirmed' => 'hasla roznia sie od siebie'
+
         ];
     }
 }
