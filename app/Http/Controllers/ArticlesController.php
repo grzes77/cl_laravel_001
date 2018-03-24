@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
+use App\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticlesRequest;
 
@@ -24,21 +25,21 @@ class ArticlesController extends Controller
 
     public function create()
     {
+
+        $files= File::all();
         $categories = Category::all();
         return view('articles.create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'files' => $files
         ]);
     }
 
 
     public function store(ArticlesRequest $request)
     {
-                //dodawanie pojedynczo wszysztkich  // $article = new Article();
-                //eleementow z formularza  // $article -> title = $request->title;
-                                           // $article -> category_id = $request->category_id;
-                                           // $article -> body = $request->body;
-                                           // $article -> save();
-        Article::create($request->all());
+        //dd($request->all());
+        $article = Article::create($request->all());
+        $article->files()->attach($request->get('file_id'));
         return redirect( route('articles.index') );
     }
 
@@ -51,20 +52,31 @@ class ArticlesController extends Controller
 
     public function edit(Article $article)
     {
+        $files = File::all();
         $categories = Category::all();
+
+
+
+        //dd($selectedFiles);
+
+
+
+
         return view('articles.edit',
-            ['article' => $article],
-            ['categories' => $categories]);
+            ['article' => $article,
+            'categories' => $categories,
+             'files'=> $files,
+                'flatSelectedFiles' => $article->files()->pluck('id')->toArray()
+            ]
+            );
     }
 
 
     public function update(ArticlesRequest $request, Article $article)
     {
-         //dodawanie pojedycznych art z form        //        $article-> title = $request -> title;
-                                                    //        $article-> category_id = $request -> category_id;
-                                                    //        $article-> body = $request -> body;
-                                                    //        $article-> save();
+
         $article->update($request->all());
+        $article->files()->sync($request->get('file_id'));
         return redirect( route('articles.index') );
     }
 

@@ -41,6 +41,33 @@
             </select>
         </div>
 
+
+        <div class="form-group">
+
+            @foreach($files as $file)
+
+
+
+                <label>
+
+
+                    <img src="/storage/thumb/{{$file->file_name}}" alt="">
+
+                    @if(in_array($file->id , $selectedFiles))
+                    <input checked type="checkbox" name="file_id[]" value="{{$file->id}}" />
+                     @else
+                        <input  type="checkbox" name="file_id[]" value="{{$file->id}}"/>
+
+                        @endif
+                </label>
+
+
+
+
+            @endforeach
+        </div>
+
+
         <div class="form-group">
             <button class="btn btn-primary">zapisz</button>
         </div>

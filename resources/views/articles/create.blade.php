@@ -24,6 +24,9 @@
             <textarea class="form-control" name="body" rows="10" placeholder="dodaj jaki artykuł"> </textarea>
         </div>
 
+
+
+
         <div class="form-group">
 
             <select name="category_id" class="form-control">
@@ -32,6 +35,21 @@
 
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+
+        @foreach($files as $file)
+
+
+                    <label>
+                        <img src="/storage/thumb/{{$file->file_name}}" alt="">
+                        <input type="checkbox" name="file_id[]" value="{{$file->id}}"/>
+                    </label>
+
+
+
+
+        @endforeach
         </div>
 
         <div class="form-group">

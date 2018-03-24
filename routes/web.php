@@ -50,4 +50,8 @@ Route::group([
 
     Route::resource('comments', 'CommentsController');
 
+    Route::resource('files', 'FilesController');
+
+    Route::resource('roles', 'RolesController');
+
 });

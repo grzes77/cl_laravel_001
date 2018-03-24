@@ -36,6 +36,30 @@
             <input placeholder=" powtorz haslo " type="password" class="form-control" name="password_confirmation">
         </div>
 
+        <div class="form-group">
+
+            @foreach($roles as $role)
+
+
+
+                <label>
+                    <input type="text" value="{{$role->name}}">
+
+
+                    @if(in_array($role->id , $selectedRoles))
+                        <input checked type="checkbox" name="role_id[]" value="{{$role->id}}"/>
+                    @else
+                        <input type="checkbox" name="role_id[]" value="{{$role->id}}"/>
+
+                    @endif
+                </label><br/>
+
+
+
+
+            @endforeach
+        </div>
+
 
         <div class="form-group">
             <button class="btn btn-primary">zapisz</button>

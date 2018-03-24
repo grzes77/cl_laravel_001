@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueEmail;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class UsersEditRequest extends FormRequest
 {
@@ -21,12 +23,15 @@ class UsersEditRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:users,email,'.$this->user()->id,
-            'password' => 'required|confirmed'
+            'email' => [
+                'required',
+                new UniqueEmail($request)
+            ],
+            'password' => 'required'
         ];
     }
 

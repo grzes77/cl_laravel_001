@@ -31,6 +31,21 @@
         <div class="form-group">
             <input placeholder=" powtorz haslo " type="password" class="form-control" name="password_confirmation">
         </div>
+        <div class="form-group">
+
+            @foreach($roles as $role)
+
+
+                <label>
+                    <input type="text" value="{{$role->name}}">
+                    <input type="checkbox" name="role_id[]" value="{{$role->id}}"/>
+                </label>
+
+
+
+
+            @endforeach
+        </div>
 
 
         <div class="form-group">

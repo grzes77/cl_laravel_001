@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersEditRequest;
 use App\Http\Requests\UsersRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -22,18 +23,31 @@ class UsersController extends Controller
 
 
     public function create()
+
     {
-        return view('users.create');
+
+        $roles= Role::all();
+
+        return view('users.create',
+            [
+             'roles' => $roles
+
+            ]);
     }
 
 
 
     public function store(UsersRequest $request)
     {
+
+
+
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
 
-        User::create($data);
+        $user = User::create($data);
+        $user->roles()->attach($request->get('role_id'));
+
         return redirect( route('users.index') );
     }
 
@@ -50,20 +64,30 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $roles = Role::all();
+
 
         return view('users.edit',
-            ['user' => $user]);
+            ['user' => $user,
+              'roles' => $roles,
+                'selectedRoles' => $user->roles()->pluck('id')->toArray()
+
+                ]);
     }
 
 
 
     public function update(UsersEditRequest $request, User $user)
     {
+
+
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
 
 
         $user->update($data);
+        $user->roles()->sync($request->get('role_id'));
+
         return redirect( route('users.index') );
     }
 

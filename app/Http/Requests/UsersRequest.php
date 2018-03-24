@@ -19,7 +19,7 @@ class UsersRequest extends FormRequest
             'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed',
-            'password_confirmed' => 'required'
+
 
         ];
     }
