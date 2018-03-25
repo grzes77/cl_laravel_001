@@ -11,11 +11,13 @@ class RolesSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create('pl_PL');
 
-        for($i=0; $i<30; $i++) {
+
+        $users_data = ['administrator', 'moderator', 'uzytkownik', 'kierownik'];
+
+        foreach($users_data as $user_date) {
             $role = new \App\Role();
-            $role->name = $faker->firstNameFemale;
+            $role->name = $user_date ;
             $role->save();
         }
     }

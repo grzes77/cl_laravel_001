@@ -43,7 +43,7 @@
 
 
                 <label>
-                    <input type="text" value="{{$role->name}}">
+                    {{$role->name}}
 
 
                     @if(in_array($role->id , $selectedRoles))
@@ -52,7 +52,7 @@
                         <input type="checkbox" name="role_id[]" value="{{$role->id}}"/>
 
                     @endif
-                </label><br/>
+                </label>
 
 
 
