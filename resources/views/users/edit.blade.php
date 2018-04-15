@@ -52,7 +52,7 @@
                         <input type="checkbox" name="role_id[]" value="{{$role->id}}"/>
 
                     @endif
-                </label>
+                </label></br>
 
 
 
